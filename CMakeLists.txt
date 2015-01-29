@@ -23,7 +23,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
 
 # find required python packages
 find_package(PythonInterp REQUIRED)
-find_package(PythonLibsNew REQUIRED)
+if(APPLE)
+  set(PYTHON_LIBRARIES     /usr/local/opt/python/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib)
+  set(PYTHON_INCLUDE_DIRS  /usr/local/opt/python/Frameworks/Python.framework/Headers/)
+else()
+  find_package(PythonLibsNew REQUIRED)
+endif()
 find_package(NumPy REQUIRED)
 
 # find boost
