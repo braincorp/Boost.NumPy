@@ -1,4 +1,4 @@
-add_library(boost_numpy ${LIBRARY_TYPE}
+add_library(boost_numpy STATIC
   # header files
   ../../../boost/numpy/dtype.hpp
   ../../../boost/numpy/internal.hpp
@@ -19,9 +19,3 @@ add_library(boost_numpy ${LIBRARY_TYPE}
 )
 
 target_link_libraries(boost_numpy ${BOOST_LIBRARYDIR}/libboost_python.a ${PYTHON_LIBRARIES})
-
-install(TARGETS boost_numpy 
-  ARCHIVE DESTINATION lib 
-  LIBRARY DESTINATION lib 
-  PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
-)

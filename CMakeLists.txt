@@ -108,14 +108,6 @@ include_directories(
   ${BOOST_INCLUDEDIR} 
   )
 
-# install headers
-install(DIRECTORY boost
-    DESTINATION "include"
-    FILES_MATCHING
-    PATTERN "*.hpp"
-    ${INSTALL_PERMISSIONS_SRC}
-  )
-
 # add submodules
 ADD_SUBDIRECTORY(libs/numpy/src)
 if (BUILD_EXAMPLES)
