@@ -31,22 +31,17 @@ else()
 endif()
 find_package(NumPy REQUIRED)
 
-# find boost
-# 
-# set(Boost_USE_STATIC_LIBS ON)
-# set(Boost_USE_MULTITHREADED ON) 
-# set(Boost_USE_STATIC_RUNTIME ON)
-if(${PYTHON_VERSION_STRING} GREATER 3.0)
-  message(STATUS "Using Python3")
-  find_package(Boost COMPONENTS python3 REQUIRED)
-else()
-  message(STATUS "Using Python2")
-  find_package(Boost COMPONENTS python REQUIRED)
-endif()
+#if(${PYTHON_VERSION_STRING} GREATER 3.0)
+#  message(STATUS "Using Python3")
+#  find_package(Boost COMPONENTS python3 REQUIRED)
+#else()
+#  message(STATUS "Using Python2")
+#  find_package(Boost COMPONENTS python REQUIRED)
+#endif()
 
 message( STATUS "Boost Paths:")
-message( STATUS "Include  : " ${Boost_INCLUDE_DIRS})
-message( STATUS "Libraries: " ${Boost_LIBRARIES})
+message( STATUS "Include  : " ${BOOST_INCLUDEDIR})
+message( STATUS "Libraries: " ${BOOST_LIBRARYDIR})
 
 # add_definitions( -DBOOST_ALL_NO_LIB )
 # In some cases, you may need to explicitly specify that a dynamic Boost is used; if so use:
@@ -110,7 +105,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}
   ${PYTHON_INCLUDE_DIRS}
   ${NUMPY_INCLUDE_DIRS}
-  ${Boost_INCLUDE_DIRS} 
+  ${BOOST_INCLUDEDIR} 
   )
 
 # install headers
@@ -133,5 +128,3 @@ endif()
 if (BUILD_DOCS)
   ADD_SUBDIRECTORY(libs/numpy/doc)
 endif()
-
-
